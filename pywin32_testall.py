@@ -4,6 +4,7 @@ import os
 import site
 import subprocess
 
+print("pywin32_testall running...")
 # locate the dirs based on where this script is - it may be either in the
 # source tree, or in an installed Python 'Scripts' tree.
 this_dir = os.path.dirname(__file__)
@@ -31,7 +32,9 @@ def run_test(script, cmdline_rest=""):
 
 def find_and_run(possible_locations, script, cmdline_rest=""):
     for maybe in possible_locations:
+        print("looking for test in", maybe)
         if os.path.isfile(os.path.join(maybe, script)):
+            print("running test in", maybe)
             run_test(os.path.abspath(os.path.join(maybe, script)), cmdline_rest)
             break
     else:
